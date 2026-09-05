@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#4c1d95"/>
+    </linearGradient>
+  </defs>
+  
+        <rect x="0" y="0" width="1200" height="630" fill="url(#bg)"/>
+        <polygon points="780,0 1200,0 1200,630 620,630" fill="#4c1d95" opacity="0.55"/>
+        <g transform="translate(870,225) scale(1.7)">
+          <path d="M50,10 C34,10 22,22 22,37 C22,48 28,55 35,62 L35,72 L65,72 L65,62 C72,55 78,48 78,37 C78,22 66,10 50,10 Z M40,85 L60,85 M42,92 L58,92" fill="none" stroke="#c4b5fd" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+        <g fill="#f1f5f9" font-family="Arial, sans-serif" font-weight="800">
+          <text x="80" y="252" font-size="42">Imposter syndrome for</text><text x="80" y="306" font-size="42">new bloggers and</text><text x="80" y="360" font-size="42">creators</text>
+        </g>
+        <text x="80" y="434" fill="#c4b5fd" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" font-weight="700">JAYSMONEYGUIDES.COM</text>
+        <rect x="80" y="206" width="70" height="6" fill="#c4b5fd"/>
+        
+</svg>

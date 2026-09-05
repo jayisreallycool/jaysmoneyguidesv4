@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#134e4a"/>
+    </linearGradient>
+  </defs>
+  
+        <rect x="0" y="0" width="1200" height="630" fill="url(#bg)"/>
+        <circle cx="230" cy="315" r="150" fill="#134e4a" opacity="0.55"/>
+        <g transform="translate(150,235) scale(1.6)">
+          <path d="M50,12 A38,38 0 1 0 50,88 A38,38 0 1 0 50,12 Z M65,35 L55,55 L35,65 L45,45 Z" fill="none" stroke="#5eead4" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+        <g fill="#f1f5f9" font-family="Arial, sans-serif" font-weight="800">
+          <text x="470" y="276" font-size="42">Amazon affiliate</text><text x="470" y="330" font-size="42">strategy comparison</text>
+        </g>
+        <text x="470" y="404" fill="#5eead4" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" font-weight="700">JAYSMONEYGUIDES.COM</text>
+        <rect x="470" y="230" width="70" height="6" fill="#5eead4"/>
+        
+</svg>

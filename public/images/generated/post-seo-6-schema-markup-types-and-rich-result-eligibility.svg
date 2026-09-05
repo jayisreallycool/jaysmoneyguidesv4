@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+  </defs>
+  
+        <rect x="0" y="0" width="1200" height="630" fill="url(#bg)"/>
+        <polygon points="780,0 1200,0 1200,630 620,630" fill="#1e3a8a" opacity="0.55"/>
+        <g transform="translate(870,225) scale(1.7)">
+          <path d="M15,80 L15,20 M15,80 L85,80 M28,65 L28,45 L42,45 L42,65 Z M50,65 L50,30 L64,30 L64,65 Z M72,65 L72,50 L86,50 L86,65 Z" fill="none" stroke="#93c5fd" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+        <g fill="#f1f5f9" font-family="Arial, sans-serif" font-weight="800">
+          <text x="80" y="276" font-size="42">Schema markup types and</text><text x="80" y="330" font-size="42">rich result eligibility</text>
+        </g>
+        <text x="80" y="404" fill="#93c5fd" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" font-weight="700">JAYSMONEYGUIDES.COM</text>
+        <rect x="80" y="230" width="70" height="6" fill="#93c5fd"/>
+        
+</svg>

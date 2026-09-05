@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale3d(1, 1, 1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale3d(1.15, 1.15, 1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes pulseGlowTeal {
+  0%, 100% {
+    transform: scale3d(1, 1, 1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale3d(1.2, 1.2, 1);
+    opacity: 0.55;
+  }
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(6px, -14px, 0) rotate(8deg);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-hero-glow-emerald {
+  animation: pulseGlow 10s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-hero-glow-teal {
+  animation: pulseGlowTeal 12s ease-in-out infinite 1.5s;
+  will-change: transform, opacity;
+}
+
+.animate-hero-float {
+  animation: floatParticle 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes ebookGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px -3px rgba(16, 185, 129, 0.25), 0 0 6px -2px rgba(16, 185, 129, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 28px 2px rgba(16, 185, 129, 0.45), 0 0 12px 1px rgba(52, 211, 153, 0.35);
+  }
+}
+
+@keyframes shimmerPass {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+.animate-ebook-glow {
+  animation: ebookGlow 3.5s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmerPass 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Scrolling announcement marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

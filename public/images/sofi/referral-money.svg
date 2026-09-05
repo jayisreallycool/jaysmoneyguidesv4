@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Earn Up to $125 With a Friend">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a0f1e"/><stop offset="55%" stop-color="#0c2a24"/><stop offset="100%" stop-color="#0a1f2e"/></linearGradient>
+    <linearGradient id="btn" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#6ee7b7"/></linearGradient>
+    <radialGradient id="gl" cx="80%" cy="30%" r="60%"><stop offset="0%" stop-color="#34d399" stop-opacity="0.28"/><stop offset="100%" stop-color="#34d399" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="400" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="400" rx="24" fill="url(#gl)"/>
+  <rect x="2" y="2" width="1196" height="396" rx="23" fill="none" stroke="#34d399" stroke-opacity="0.4" stroke-width="2"/>
+  <g transform="translate(970,55)"><rect x="20" y="55" width="90" height="70" rx="6" fill="#34d399" opacity="0.15"/><rect x="20" y="55" width="90" height="70" rx="6" fill="none" stroke="#34d399" stroke-width="4" opacity="0.9"/><path d="M12 55 h106 v22 h-106 Z" fill="none" stroke="#34d399" stroke-width="4" opacity="0.9"/><path d="M65 40 c-18-18-40 4-22 15 M65 40 c18-18 40 4 22 15 M65 40 V125" fill="none" stroke="#34d399" stroke-width="4" opacity="0.9"/></g>
+  <rect x="64" y="48" width="233" height="38" rx="19" fill="#34d399" opacity="0.16"/>
+  <rect x="64" y="48" width="233" height="38" rx="19" fill="none" stroke="#34d399" stroke-opacity="0.5"/>
+  <text x="76" y="73" font-family="Arial" font-size="17" font-weight="800" letter-spacing="1.5" fill="#6ee7b7">SOFI REFERRAL BONUS</text>
+  <text x="64" y="132" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="800" fill="#f8fafc">Earn Up to $125</text><text x="64" y="182" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="800" fill="#f8fafc">With a Friend</text>
+  <text x="64" y="240" font-family="Arial" font-size="21" fill="#cbd5e1">Open and fund an eligible account — you both get a bonus.</text>
+  <g><rect x="64" y="250" width="150" height="34" rx="17" fill="#34d399" opacity="0.14"/><rect x="64" y="250" width="150" height="34" rx="17" fill="none" stroke="#34d399" stroke-opacity="0.4"/><text x="139" y="273" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#6ee7b7">You get $100</text></g><g><rect x="228" y="250" width="150" height="34" rx="17" fill="#34d399" opacity="0.14"/><rect x="228" y="250" width="150" height="34" rx="17" fill="none" stroke="#34d399" stroke-opacity="0.4"/><text x="303" y="273" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#6ee7b7">They get $50</text></g><g><rect x="392" y="250" width="220" height="34" rx="17" fill="#34d399" opacity="0.14"/><rect x="392" y="250" width="220" height="34" rx="17" fill="none" stroke="#34d399" stroke-opacity="0.4"/><text x="502" y="273" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#6ee7b7">+$25 with SoFi Plus</text></g>
+  <rect x="64" y="312" width="340" height="60" rx="30" fill="url(#btn)"/>
+  <text x="234" y="350" text-anchor="middle" font-family="Arial" font-size="22" font-weight="800" fill="#06120e">Start my bonus  →</text>
+  <text x="1136" y="368" text-anchor="end" font-family="Arial" font-size="16" font-weight="700" fill="#6ee7b7" opacity="0.85">JaysMoneyGuides</text>
+</svg>

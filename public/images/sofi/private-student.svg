@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fund College After Grants &amp; Federal Aid">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a0f1e"/><stop offset="55%" stop-color="#0c2a24"/><stop offset="100%" stop-color="#0a1f2e"/></linearGradient>
+    <linearGradient id="btn" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#c4b5fd"/></linearGradient>
+    <radialGradient id="gl" cx="80%" cy="30%" r="60%"><stop offset="0%" stop-color="#a78bfa" stop-opacity="0.28"/><stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="400" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="400" rx="24" fill="url(#gl)"/>
+  <rect x="2" y="2" width="1196" height="396" rx="23" fill="none" stroke="#a78bfa" stroke-opacity="0.4" stroke-width="2"/>
+  <g transform="translate(960,60)"><path d="M20 160 C60 40 120 40 160 160" fill="none" stroke="#a78bfa" stroke-width="4" opacity="0.9"/><path d="M160 160 l-6-22 M160 160 l-22 6" fill="none" stroke="#a78bfa" stroke-width="4" opacity="0.9"/></g>
+  <rect x="64" y="48" width="255" height="38" rx="19" fill="#a78bfa" opacity="0.16"/>
+  <rect x="64" y="48" width="255" height="38" rx="19" fill="none" stroke="#a78bfa" stroke-opacity="0.5"/>
+  <text x="76" y="73" font-family="Arial" font-size="17" font-weight="800" letter-spacing="1.5" fill="#c4b5fd">PRIVATE STUDENT LOANS</text>
+  <text x="64" y="132" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="800" fill="#f8fafc">Fund College After</text><text x="64" y="182" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="800" fill="#f8fafc">Grants &amp; Federal Aid</text>
+  <text x="64" y="240" font-family="Arial" font-size="21" fill="#cbd5e1">Sensible funding for the gap scholarships don’t cover.</text>
+  <g><rect x="64" y="250" width="180" height="34" rx="17" fill="#a78bfa" opacity="0.14"/><rect x="64" y="250" width="180" height="34" rx="17" fill="none" stroke="#a78bfa" stroke-opacity="0.4"/><text x="154" y="273" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#c4b5fd">Cosigner option</text></g><g><rect x="258" y="250" width="140" height="34" rx="17" fill="#a78bfa" opacity="0.14"/><rect x="258" y="250" width="140" height="34" rx="17" fill="none" stroke="#a78bfa" stroke-opacity="0.4"/><text x="328" y="273" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#c4b5fd">For the gap</text></g><g><rect x="412" y="250" width="140" height="34" rx="17" fill="#a78bfa" opacity="0.14"/><rect x="412" y="250" width="140" height="34" rx="17" fill="none" stroke="#a78bfa" stroke-opacity="0.4"/><text x="482" y="273" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#c4b5fd">Clear terms</text></g>
+  <rect x="64" y="312" width="325" height="60" rx="30" fill="url(#btn)"/>
+  <text x="226.5" y="350" text-anchor="middle" font-family="Arial" font-size="22" font-weight="800" fill="#06120e">Explore loans  →</text>
+  <text x="1136" y="368" text-anchor="end" font-family="Arial" font-size="16" font-weight="700" fill="#c4b5fd" opacity="0.85">JaysMoneyGuides</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+  </defs>
+  
+        <rect x="0" y="0" width="1200" height="630" fill="url(#bg)"/>
+        <circle cx="230" cy="315" r="150" fill="#020617" opacity="0.55"/>
+        <g transform="translate(150,235) scale(1.6)">
+          <path d="M35,65 C25,65 17,57 17,47 C17,37 25,29 35,29 L45,29 M65,35 C75,35 83,43 83,53 C83,63 75,71 65,71 L55,71 M35,50 L65,50" fill="none" stroke="#22d3ee" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+        <g fill="#f1f5f9" font-family="Arial, sans-serif" font-weight="800">
+          <text x="470" y="276" font-size="42">Docker container</text><text x="470" y="330" font-size="42">architecture on a VPS</text>
+        </g>
+        <text x="470" y="404" fill="#22d3ee" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" font-weight="700">JAYSMONEYGUIDES.COM</text>
+        <rect x="470" y="230" width="70" height="6" fill="#22d3ee"/>
+        
+</svg>

@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Refinancing Built For Your Medical Career">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a0f1e"/><stop offset="55%" stop-color="#0c2a24"/><stop offset="100%" stop-color="#0a1f2e"/></linearGradient>
+    <linearGradient id="btn" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#7dd3fc"/></linearGradient>
+    <radialGradient id="gl" cx="80%" cy="30%" r="60%"><stop offset="0%" stop-color="#38bdf8" stop-opacity="0.28"/><stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="400" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="400" rx="24" fill="url(#gl)"/>
+  <rect x="2" y="2" width="1196" height="396" rx="23" fill="none" stroke="#38bdf8" stroke-opacity="0.4" stroke-width="2"/>
+  <g transform="translate(970,50)"><path d="M60 10 l50 20 v40 c0 40-26 60-50 70 -24-10-50-30-50-70 V30 Z" fill="#38bdf8" opacity="0.15"/><path d="M60 10 l50 20 v40 c0 40-26 60-50 70 -24-10-50-30-50-70 V30 Z" fill="none" stroke="#38bdf8" stroke-width="4" opacity="0.9"/><path d="M38 70 l16 16 32-34" fill="none" stroke="#38bdf8" stroke-width="4" opacity="0.9"/></g>
+  <rect x="64" y="48" width="266" height="38" rx="19" fill="#38bdf8" opacity="0.16"/>
+  <rect x="64" y="48" width="266" height="38" rx="19" fill="none" stroke="#38bdf8" stroke-opacity="0.5"/>
+  <text x="76" y="73" font-family="Arial" font-size="17" font-weight="800" letter-spacing="1.5" fill="#7dd3fc">FOR DOCTORS &amp; DENTISTS</text>
+  <text x="64" y="132" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="800" fill="#f8fafc">Refinancing Built For</text><text x="64" y="182" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="800" fill="#f8fafc">Your Medical Career</text>
+  <text x="64" y="240" font-family="Arial" font-size="21" fill="#cbd5e1">Large balances and training timelines, handled with care.</text>
+  <g><rect x="64" y="250" width="180" height="34" rx="17" fill="#38bdf8" opacity="0.14"/><rect x="64" y="250" width="180" height="34" rx="17" fill="none" stroke="#38bdf8" stroke-opacity="0.4"/><text x="154" y="273" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#7dd3fc">Residency-aware</text></g><g><rect x="258" y="250" width="170" height="34" rx="17" fill="#38bdf8" opacity="0.14"/><rect x="258" y="250" width="170" height="34" rx="17" fill="none" stroke="#38bdf8" stroke-opacity="0.4"/><text x="343" y="273" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#7dd3fc">Large balances</text></g><g><rect x="442" y="250" width="210" height="34" rx="17" fill="#38bdf8" opacity="0.14"/><rect x="442" y="250" width="210" height="34" rx="17" fill="none" stroke="#38bdf8" stroke-opacity="0.4"/><text x="547" y="273" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#7dd3fc">Career-stage terms</text></g>
+  <rect x="64" y="312" width="340" height="60" rx="30" fill="url(#btn)"/>
+  <text x="234" y="350" text-anchor="middle" font-family="Arial" font-size="22" font-weight="800" fill="#06120e">See my options  →</text>
+  <text x="1136" y="368" text-anchor="end" font-family="Arial" font-size="16" font-weight="700" fill="#7dd3fc" opacity="0.85">JaysMoneyGuides</text>
+</svg>

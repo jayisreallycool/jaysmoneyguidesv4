@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+  </defs>
+  
+        <rect x="0" y="0" width="1200" height="630" fill="url(#bg)"/>
+        <polygon points="780,0 1200,0 1200,630 620,630" fill="#020617" opacity="0.55"/>
+        <g transform="translate(870,225) scale(1.7)">
+          <path d="M30,15 L55,15 L55,25 C58,22 65,22 68,28 C71,34 68,40 62,40 L55,40 L55,55 L70,55 C70,48 76,45 82,48 C88,51 88,58 82,62 C76,65 70,62 70,55 L70,70 L45,70 L45,60 C42,63 35,63 32,57 C29,51 32,45 38,45 L45,45 L45,30 C42,33 35,33 32,27 C29,21 32,15 38,15" fill="none" stroke="#22d3ee" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+        <g fill="#f1f5f9" font-family="Arial, sans-serif" font-weight="800">
+          <text x="80" y="276" font-size="42">Minimalist desk setup</text><text x="80" y="330" font-size="42">budget tiers</text>
+        </g>
+        <text x="80" y="404" fill="#22d3ee" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" font-weight="700">JAYSMONEYGUIDES.COM</text>
+        <rect x="80" y="230" width="70" height="6" fill="#22d3ee"/>
+        
+</svg>

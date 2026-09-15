@@ -1,0 +1,105 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ====================================================================
+    // SECURITY HELPER FUNCTIONS
+    // ====================================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        request.auth.token.email != null && 
+        (
+          request.auth.token.email.lower() == 'jayisreallycool@gmail.com' ||
+          request.auth.token.email.lower() == 'buddhacmd02@gmail.com'
+        );
+    }
+
+    // ====================================================================
+    // PUBLIC MEDIA (Read-Only for Clients)
+    // ====================================================================
+
+    // Blog post images & WebP media assets: publicly readable, admin write only
+    match /images/{fileName=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Media assets library & infographics: publicly readable, admin write only
+    match /media_assets/{fileName=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Video assets & tutorials: publicly readable streaming, admin write only
+    match /videos/{fileName=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ====================================================================
+    // EBOOK DELIVERY (Public Access with Signed URLs)
+    // ====================================================================
+
+    // Free ebook: publicly readable directly via client SDK.
+    match /ebooks/free/{fileName=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Paid ebooks live under ebooks/downloads/. These must NOT be publicly
+    // readable — the server generates short-lived signed URLs via
+    // /api/download-ebook after verifying purchase (Firebase Admin bypasses
+    // these rules, so signed-URL generation still works).
+    match /ebooks/downloads/{fileName=**} {
+      allow read: if isAdmin(); // clients cannot read directly; server signs URLs
+      allow write: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Any other ebooks/* path (covers, metadata) is public-readable, admin-write.
+    // NOTE: this intentionally does NOT use a recursive wildcard over the whole
+    // ebooks/ tree, so it can't accidentally expose ebooks/downloads/ above.
+    match /ebooks/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    match /ebooks/covers/{fileName=**} {
+      allow read: if true; // cover images are public
+      allow write: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ====================================================================
+    // GENERAL UPLOADS (Admin Only)
+    // ====================================================================
+
+    // General uploads folder: publicly readable, admin write only
+    match /uploads/{fileName=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ====================================================================
+    // FALLBACK (Deny All for Security)
+    // ====================================================================
+
+    // Explicit fallback: deny all other paths unless explicitly allowed
+    match /{allPaths=**} {
+      allow read: if true; // Default: public read for safety (media files)
+      allow write: if isAdmin();
+      allow delete: if isAdmin();
+    }
+  }
+}

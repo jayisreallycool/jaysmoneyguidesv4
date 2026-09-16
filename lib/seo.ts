@@ -16,6 +16,10 @@ export function articleSchema(post: BlogPost) {
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE}/images/jaysmoneyguides-logo.webp`,
+      },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/guide/${post.slug}` },
   };
@@ -50,6 +54,7 @@ export function organizationSchema() {
     '@type': 'Organization',
     name: SITE_NAME,
     url: SITE,
+    logo: `${SITE}/images/jaysmoneyguides-logo.webp`,
     description:
       'Practical guides and ebooks on affiliate marketing, SEO, blogging, e-commerce, and smart money moves.',
     sameAs: [

@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
-import { BlogPost, BlogPostSummary } from '@/lib/types';
+import { BlogPost } from '@/lib/types';
 import { Clock, Eye, Heart, Bookmark, ExternalLink, ArrowUpRight, CheckCircle2, Star } from 'lucide-react';
 import { SafeImage } from './SafeImage';
 
 interface PostCardProps {
-  post: BlogPostSummary;
-  onOpenPost: (post: BlogPostSummary) => void;
+  post: BlogPost;
+  onOpenPost: (post: BlogPost) => void;
   isBookmarked: boolean;
   onToggleBookmark: (postId: string, e: React.MouseEvent) => void;
   onLikePost: (postId: string, e: React.MouseEvent) => void;
@@ -146,7 +146,7 @@ export const PostCard: React.FC<PostCardProps> = React.memo(({
         <div className="pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs text-slate-400">
           <div className="flex items-center gap-2">
             <SafeImage
-              src={post.author.avatar || ''}
+              src={post.author.avatar || '/images/jaysmoneyguides-logo.webp'}
               alt={post.author.name}
               className="w-7 h-7 rounded-full object-cover border border-emerald-500/30"
               loading="lazy"

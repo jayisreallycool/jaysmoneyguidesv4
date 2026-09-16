@@ -2,86 +2,30 @@
 
 /**
  * Sticky animated scrolling red announcement bar, pinned to the very top.
- * Optimized for mobile with GPU acceleration and smooth animation.
+ * The message scrolls right-to-left (marquee) and the bar stays fixed on scroll.
  */
 const MESSAGE =
-  '🔥 LIMITED TIME: Get up to $125 with SoFi when you refer a friend  •  New SoFi Bank guides just dropped  •  Free Affiliate Marketing ebook available  •  ';
+  '🔥 LIMITED TIME: Get up to $125 with SoFi when you refer a friend  •  New SoFi Bank guides just dropped — personal loans, student refinancing & more  •  Grab the free Affiliate Marketing for Beginners ebook today  •  ';
 
 export function AnnouncementBar() {
   return (
     <div
       role="region"
       aria-label="Site announcements"
-      className="w-full bg-gradient-to-r from-red-700 via-red-600 to-red-700 border-b border-red-900/50 shadow-md"
-      style={{
-        height: '40px',
-        display: 'flex',
-        alignItems: 'center',
-        overflow: 'hidden',
-        willChange: 'transform',
-      }}
+      className="w-full h-10 flex items-center overflow-hidden bg-gradient-to-r from-red-700 via-red-600 to-red-700 border-b border-red-900/50 shadow-lg"
     >
-      {/* Container with GPU acceleration */}
-      <div
-        className="relative flex whitespace-nowrap"
-        style={{
-          animation: 'marquee 30s linear infinite',
-          willChange: 'transform',
-          transform: 'translateZ(0)', // GPU acceleration
-          backfaceVisibility: 'hidden',
-        }}
-      >
+      <div className="relative flex whitespace-nowrap">
         {/* First copy: readable by screen readers once */}
-        <div className="flex shrink-0 items-center">
-          <span className="px-4 text-xs sm:text-sm font-bold tracking-wide text-white" style={{ minWidth: 'fit-content' }}>
-            {MESSAGE}
-          </span>
-          <span className="px-4 text-xs sm:text-sm font-bold tracking-wide text-white" aria-hidden="true" style={{ minWidth: 'fit-content' }}>
-            {MESSAGE}
-          </span>
+        <div className="animate-marquee flex shrink-0 items-center">
+          <span className="mx-4 text-sm font-bold tracking-wide text-white">{MESSAGE}</span>
+          <span className="mx-4 text-sm font-bold tracking-wide text-white" aria-hidden="true">{MESSAGE}</span>
         </div>
-        {/* Second copy: decorative, for seamless loop */}
-        <div className="flex shrink-0 items-center" aria-hidden="true">
-          <span className="px-4 text-xs sm:text-sm font-bold tracking-wide text-white" style={{ minWidth: 'fit-content' }}>
-            {MESSAGE}
-          </span>
-          <span className="px-4 text-xs sm:text-sm font-bold tracking-wide text-white" style={{ minWidth: 'fit-content' }}>
-            {MESSAGE}
-          </span>
+        {/* Second copy: decorative only, for the seamless loop */}
+        <div className="animate-marquee flex shrink-0 items-center" aria-hidden="true">
+          <span className="mx-4 text-sm font-bold tracking-wide text-white">{MESSAGE}</span>
+          <span className="mx-4 text-sm font-bold tracking-wide text-white">{MESSAGE}</span>
         </div>
       </div>
-
-      {/* Inline keyframe animation */}
-      <style>{`
-        @keyframes marquee {
-          from {
-            transform: translateX(0) translateZ(0);
-          }
-          to {
-            transform: translateX(-50%) translateZ(0);
-          }
-        }
-
-        /* Reduce motion preference */
-        @media (prefers-reduced-motion: reduce) {
-          div[style*="animation: marquee"] {
-            animation: none !important;
-            transform: translateX(0) !important;
-          }
-        }
-
-        /* Mobile optimization: use less smooth scrolling on lower-end devices */
-        @media (max-width: 480px) {
-          @keyframes marquee {
-            from {
-              transform: translateX(0) translateZ(0);
-            }
-            to {
-              transform: translateX(-50%) translateZ(0);
-            }
-          }
-        }
-      `}</style>
     </div>
   );
 }

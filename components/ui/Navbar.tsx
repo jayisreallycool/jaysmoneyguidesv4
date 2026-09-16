@@ -224,8 +224,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               }}
               className="flex items-center gap-2.5 text-left group focus:outline-none cursor-pointer"
             >
-              <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-800 border border-emerald-500/30 shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform shrink-0 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">JM</span>
+              <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-800 border border-emerald-500/30 shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform shrink-0">
+                <img 
+                  src="/images/jaysmoneyguides-logo.webp" 
+                  alt="JaysMoneyGuides Mascot" 
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/images/jaysmoneyguides-logo.webp';
+                  }}
+                  className="w-full h-full object-cover object-top"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div>
                 <span className="font-extrabold text-lg sm:text-xl tracking-tight text-white flex items-center gap-1">
@@ -342,31 +350,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>eBooks</span>
             </a>
 
-            {/* Blog Link */}
-            <a
-              href="/blog"
-              className="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
-            >
-              Blog
-            </a>
-
-            {/* Store Link */}
-            <a
-              href="/ebooks"
-              className="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer"
-            >
-              <ShoppingBag className="w-4 h-4 text-amber-400" />
-              Store
-            </a>
-
-            {/* Tools Link */}
-            <a
-              href="/tools"
-              className="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
-            >
-              Tools
-            </a>
-
             {/* Contact Us Trigger */}
             <a
               href="/contact"
@@ -415,12 +398,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             {!currentUser ? (
               <button
                 onClick={() => openModal('auth')}
-                className="flex bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 font-extrabold px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm items-center gap-2 transition-all shadow-lg shadow-emerald-500/25 group cursor-pointer"
-                title="Sign in or create account"
+                className="hidden sm:flex bg-slate-800 hover:bg-slate-700 text-white font-bold px-3 py-1.5 rounded-xl text-xs sm:text-sm items-center gap-2 transition-all border border-slate-700/80 shadow-sm hover:border-emerald-500/50 group cursor-pointer"
               >
-                <LogIn className="w-4 h-4 shrink-0" />
-                <span className="hidden sm:inline">Login</span>
-                <span className="sm:hidden">Sign In</span>
+                <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center p-0.5 shrink-0 shadow-sm">
+                  <svg className="w-3 h-3" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+                  </svg>
+                </div>
+                <span>Sign In</span>
               </button>
             ) : (
               <div className="relative">
@@ -498,45 +486,53 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* SLIDE DROP DOWN MENU TOGGLE BUTTON (Smooth animated hamburger/X toggle) */}
             <motion.button
-              whileTap={{ scale: 0.92 }}
+              whileTap={{ scale: 0.94 }}
               onClick={() => setIsDropdownMenuOpen(!isDropdownMenuOpen)}
-              className={`relative group px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl border-2 transition-all duration-300 flex items-center gap-1.5 sm:gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500/50 ${
+              className={`relative group px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl border transition-all duration-300 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500/50 ${
                 isDropdownMenuOpen
                   ? 'bg-emerald-500 text-slate-950 border-emerald-400 font-black shadow-lg shadow-emerald-500/30'
-                  : 'bg-slate-800 text-slate-100 border-slate-600 hover:text-white hover:border-emerald-400 hover:bg-slate-700 active:scale-95'
+                  : 'bg-slate-900/90 text-slate-100 border-slate-700/80 hover:text-white hover:border-emerald-500/70 hover:bg-slate-800/90'
               }`}
               aria-label={isDropdownMenuOpen ? "Close slide drop down menu" : "Open slide drop down menu"}
               aria-expanded={isDropdownMenuOpen}
-              title={isDropdownMenuOpen ? "Close Menu" : "Open Menu"}
+              title={isDropdownMenuOpen ? "Close Menu" : "Open Slide Down Menu Bar"}
             >
               {/* Morphing Hamburger / X Icon */}
-              <div className="relative w-5 h-5 flex flex-col justify-center items-center">
+              <div className="relative w-4 h-4 sm:w-4.5 sm:h-4.5 flex flex-col justify-center items-center">
                 <span 
-                  className={`block h-0.5 rounded-full transition-all duration-300 ease-out ${
+                  className={`block h-0.5 w-4 rounded-full transition-all duration-300 ease-out ${
                     isDropdownMenuOpen 
-                      ? 'bg-slate-950 w-5 rotate-45 translate-y-1.5' 
-                      : 'bg-slate-100 group-hover:bg-white w-4 -translate-y-1'
+                      ? 'bg-slate-950 rotate-45 translate-y-1' 
+                      : 'bg-emerald-400 group-hover:bg-emerald-300 -translate-y-1'
                   }`} 
                 />
                 <span 
-                  className={`block h-0.5 rounded-full transition-all duration-200 ease-out ${
+                  className={`block h-0.5 w-4 rounded-full transition-all duration-200 ease-out ${
                     isDropdownMenuOpen 
                       ? 'opacity-0 scale-x-0' 
-                      : 'bg-slate-100 w-3 self-start group-hover:bg-white group-hover:w-4'
+                      : 'bg-emerald-300 w-3 self-start group-hover:w-4 group-hover:bg-emerald-200'
                   }`} 
                 />
                 <span 
-                  className={`block h-0.5 rounded-full transition-all duration-300 ease-out ${
+                  className={`block h-0.5 w-4 rounded-full transition-all duration-300 ease-out ${
                     isDropdownMenuOpen 
-                      ? 'bg-slate-950 w-5 -rotate-45 -translate-y-1.5' 
-                      : 'bg-slate-100 group-hover:bg-white w-4 translate-y-1'
+                      ? 'bg-slate-950 -rotate-45 -translate-y-1' 
+                      : 'bg-emerald-400 group-hover:bg-emerald-300 translate-y-1'
                   }`} 
                 />
               </div>
 
-              <span className="text-xs font-extrabold tracking-wide text-inherit">
-                {isDropdownMenuOpen ? '✕' : '☰'}
+              <span className="text-xs font-extrabold tracking-wide hidden sm:inline-block">
+                {isDropdownMenuOpen ? 'Close' : 'Menu'}
               </span>
+
+              {/* Pulsing Emerald Dot */}
+              {!isDropdownMenuOpen && (
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-sm shadow-emerald-400" />
+                </span>
+              )}
             </motion.button>
           </div>
         </div>
@@ -665,30 +661,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                       </div>
                       <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-white" />
                     </button>
-
-                    <a
-                      href="/blog"
-                      onClick={() => setIsDropdownMenuOpen(false)}
-                      className="w-full text-left px-3 py-2 rounded-xl text-xs text-slate-200 hover:bg-slate-800 hover:text-white flex items-center justify-between group transition-colors cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2">
-                        <FileText className="w-4 h-4 text-blue-400" />
-                        <span className="font-semibold">Blog</span>
-                      </div>
-                      <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-white" />
-                    </a>
-
-                    <a
-                      href="/tools"
-                      onClick={() => setIsDropdownMenuOpen(false)}
-                      className="w-full text-left px-3 py-2 rounded-xl text-xs text-slate-200 hover:bg-slate-800 hover:text-white flex items-center justify-between group transition-colors cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2">
-                        <Zap className="w-4 h-4 text-yellow-400" />
-                        <span className="font-semibold">Tools & Resources</span>
-                      </div>
-                      <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-white" />
-                    </a>
 
                     <button
                       onClick={() => {

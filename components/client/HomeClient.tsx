@@ -1,9 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/components/client/AuthProvider';
-import { getFirebaseAuth } from '@/lib/firebase-client';
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { HeroHeader } from '@/components/ui/HeroHeader';
 import { PostCard } from '@/components/ui/PostCard';
 import { CategoryTabs } from '@/components/ui/CategoryTabs';
@@ -18,11 +16,7 @@ const EbookViewer = dynamic(
   { ssr: false, loading: () => <div className="h-[60vh] grid place-items-center text-slate-400">Loading viewer…</div> }
 );
 import { ProductPreviewModal } from '@/components/ui/ProductPreviewModal';
-const PostReaderModal = dynamic(
-  () => import('@/components/ui/PostReaderModal').then((m) => m.PostReaderModal),
-  { ssr: false }
-);
-import type { BlogPost, BlogPostSummary, Product, Category } from '@/lib/types';
+import type { BlogPost, Product, Category } from '@/lib/types';
 
 const INITIAL_COUNT = 6;
 const LOAD_STEP = 5;
@@ -38,21 +32,16 @@ function shuffle<T>(arr: T[], seed = 1): T[] {
   return a;
 }
 
-export function HomeClient({ posts: initialPosts, products }: { posts: BlogPostSummary[]; products: Product[] }) {
+export function HomeClient({ posts, products }: { posts: BlogPost[]; products: Product[] }) {
   const router = useRouter();
-  const { user } = useAuth();
-  const [posts, setPosts] = useState<BlogPostSummary[]>(initialPosts);
   const [category, setCategory] = useState<Category | 'All'>('All');
-  const [postsLoaded, setPostsLoaded] = useState(initialPosts.length >= 50);
   const [visibleCount, setVisibleCount] = useState<number>(INITIAL_COUNT);
   const [bookmarks, setBookmarks] = useState<string[]>([]);
   const [likes, setLikes] = useState<string[]>([]);
   const [checkingOutId, setCheckingOutId] = useState<string | null>(null);
-  const [purchasedIds, setPurchasedIds] = useState<string[]>([]);
   const [viewerProduct, setViewerProduct] = useState<Product | null>(null);
   const [previewProduct, setPreviewProduct] = useState<Product | null>(null);
   const [viewerEmail, setViewerEmail] = useState<string>('');
-  const [readingPost, setReadingPost] = useState<BlogPost | null>(null);
 
   // IMPORTANT: do not use Math.random() during the initial render.
   // Server and browser must produce identical markup or React hydration fails.
@@ -72,53 +61,7 @@ export function HomeClient({ posts: initialPosts, products }: { posts: BlogPostS
     [posts]
   );
 
-  useEffect(() => {
-    let cancelled = false;
-    if (!user) { setPurchasedIds([]); return; }
-    const firebaseAuth = getFirebaseAuth();
-    if (!firebaseAuth?.currentUser) return;
-    firebaseAuth.currentUser.getIdToken()
-      .then((token) => fetch('/api/ebook-entitlements', { headers: { Authorization: `Bearer ${token}` }, cache: 'no-store' }))
-      .then((res) => res.ok ? res.json() : { productIds: [] })
-      .then((data) => { if (!cancelled && Array.isArray(data.productIds)) setPurchasedIds(data.productIds); })
-      .catch((error) => console.error('Ebook entitlement load failed:', error));
-    return () => { cancelled = true; };
-  }, [user]);
-
-  useEffect(() => {
-    if (postsLoaded) return;
-    let cancelled = false;
-    fetch('/api/posts', { cache: 'force-cache' })
-      .then((res) => { if (!res.ok) throw new Error('Failed to load posts'); return res.json() as Promise<BlogPostSummary[]>; })
-      .then((data) => { if (!cancelled && Array.isArray(data)) { setPosts(data); setPostsLoaded(true); } })
-      .catch((err) => console.error('Homepage post index load failed:', err));
-    return () => { cancelled = true; };
-  }, [postsLoaded]);
-
-  const openPost = async (post: BlogPostSummary) => {
-    try {
-      const res = await fetch(`/api/posts/${encodeURIComponent(post.slug)}`, { cache: 'force-cache' });
-      if (!res.ok) throw new Error('Article unavailable');
-      const fullPost = await res.json() as BlogPost;
-      setReadingPost(fullPost);
-      if (typeof window !== 'undefined') window.history.pushState({}, '', `/guide/${fullPost.slug}`);
-    } catch (error) {
-      console.error('Article load failed:', error);
-      setReadingPost(post as BlogPost);
-      if (typeof window !== 'undefined') window.history.pushState({}, '', `/guide/${post.slug}`);
-    }
-  };
-  const closeReader = () => {
-    setReadingPost(null);
-    if (typeof window !== 'undefined') window.history.pushState({}, '', '/');
-  };
-
-  // Browser back button closes the reader modal instead of leaving the site.
-  useEffect(() => {
-    const onPop = () => setReadingPost(null);
-    window.addEventListener('popstate', onPop);
-    return () => window.removeEventListener('popstate', onPop);
-  }, []);
+  const openPost = (post: BlogPost) => router.push(`/guide/${post.slug}`);
   const toggleBookmark = (postId: string, e: React.MouseEvent) => {
     e.preventDefault(); e.stopPropagation();
     setBookmarks((b) => (b.includes(postId) ? b.filter((x) => x !== postId) : [...b, postId]));
@@ -153,14 +96,14 @@ export function HomeClient({ posts: initialPosts, products }: { posts: BlogPostS
     <>
       <HeroHeader
         onSubscribeSuccess={() => {}}
-        onSelectPost={(id: string) => { const p = posts.find((x) => x.id === id); if (p) openPost(p); }}
+        onSelectPost={(id: string) => { const p = posts.find((x) => x.id === id); if (p) router.push(`/guide/${p.slug}`); }}
       />
 
       {/* Ebooks — full-width intro banner, then constrained store grid */}
       <EbooksBanner />
       <section id="ebooks" className="mx-auto max-w-7xl px-4 py-10">
         <div id="ebooks-grid">
-          <StoreSection products={products} purchasedIds={purchasedIds} onPreview={handlePreview}
+          <StoreSection products={products} purchasedIds={[]} onPreview={handlePreview}
             onOpenFree={handleOpenFree} onBuy={handleBuy} checkingOutId={checkingOutId} />
         </div>
       </section>
@@ -212,23 +155,9 @@ export function HomeClient({ posts: initialPosts, products }: { posts: BlogPostS
               <h3 className="text-lg font-bold text-white">{viewerProduct.title}</h3>
               <button onClick={() => setViewerProduct(null)} className="px-3 py-1 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700">Close</button>
             </div>
-            <EbookViewer productId={viewerProduct.id} email={viewerEmail || undefined} isFree={!!viewerProduct.isFree} />
+            <EbookViewer productId={viewerProduct.id} email={viewerEmail || undefined} />
           </div>
         </div>
-      )}
-      {readingPost && (
-        <PostReaderModal
-          post={readingPost}
-          allPosts={posts as BlogPost[]}
-          onClose={closeReader}
-          isBookmarked={bookmarks.includes(readingPost.id)}
-          onToggleBookmark={(id) => setBookmarks((b) => b.includes(id) ? b.filter((x) => x !== id) : [...b, id])}
-          isLiked={likes.includes(readingPost.id)}
-          onLikePost={(id) => setLikes((l) => l.includes(id) ? l.filter((x) => x !== id) : [...l, id])}
-          comments={[]}
-          onAddComment={() => {}}
-          onSelectPost={(p) => openPost(p)}
-        />
       )}
     </>
   );

@@ -12,7 +12,7 @@ export const SEO_POSTS: BlogPost[] = [
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-21',
     readTimeMinutes: 9,
@@ -165,7 +165,7 @@ Yes, particularly for specific, narrower search terms where a large publication 
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-17',
     readTimeMinutes: 9,
@@ -301,7 +301,7 @@ A useful test is whether you can honestly envision producing genuinely thorough,
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-13',
     readTimeMinutes: 8,
@@ -435,7 +435,7 @@ This data-driven approach transforms internal linking from a theoretical best pr
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-09',
     readTimeMinutes: 8,
@@ -571,7 +571,7 @@ This can be a signal that your chosen topic scope is genuinely too narrow to sup
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-05',
     readTimeMinutes: 12,
@@ -699,7 +699,7 @@ The sites that have genuinely succeeded with programmatic SEO at scale tend to s
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-01',
     readTimeMinutes: 10,
@@ -831,7 +831,7 @@ Rather than treating schema markup as a one-off implementation project, the most
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-26',
     readTimeMinutes: 10,
@@ -967,7 +967,7 @@ While optimizing Core Web Vitals requires real time and resources, the return on
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-22',
     readTimeMinutes: 10,
@@ -1101,7 +1101,7 @@ The most successful site owners treat SEO audits not as occasional, reactive exe
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-18',
     readTimeMinutes: 10,
@@ -1229,7 +1229,7 @@ While local SEO tactics can produce results quickly in some cases, the genuine, 
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-12',
     readTimeMinutes: 12,

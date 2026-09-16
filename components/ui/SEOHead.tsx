@@ -95,7 +95,11 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ post, category = 'All', search
         },
         'publisher': {
           '@type': 'Organization',
-          'name': 'Jaysmoneyguides'
+          'name': 'Jaysmoneyguides',
+          'logo': {
+            '@type': 'ImageObject',
+            'url': 'https://www.jaysmoneyguides.com/images/jaysmoneyguides-logo.webp'
+          }
         },
         'mainEntityOfPage': {
           '@type': 'WebPage',

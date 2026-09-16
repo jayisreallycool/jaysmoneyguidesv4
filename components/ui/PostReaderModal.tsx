@@ -448,10 +448,10 @@ export const PostReaderModal: React.FC<PostReaderModalProps> = ({
             <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-xs sm:text-sm">
               <div className="flex items-center gap-3">
                 <img
-                  src={post.author.avatar || ''}
+                  src={post.author.avatar || '/images/jaysmoneyguides-logo.webp'}
                   alt={post.author.name}
                   onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none';
+                    (e.target as HTMLImageElement).src = '/images/jaysmoneyguides-logo.webp';
                   }}
                   className="w-10 h-10 rounded-full object-cover border-2 border-emerald-500/40"
                 />

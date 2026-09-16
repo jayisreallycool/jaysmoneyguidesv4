@@ -13,11 +13,9 @@ import { getFirebaseAuth } from '@/lib/firebase-client';
 export function EbookViewer({
   productId,
   email,
-  isFree = false,
 }: {
   productId: string;
   email?: string;
-  isFree?: boolean;
 }) {
   const [url, setUrl] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
@@ -49,10 +47,10 @@ export function EbookViewer({
 
   /*
    * Load the ebook.
-   *  - Free books: fetch directly, NO auth required (works for everyone,
-   *    every device).
-   *  - Paid books: send the Firebase ID token when signed in, plus the
-   *    admin key so the owner can bypass the purchase check.
+   *
+   * For paid books, send the Firebase ID token.
+   * The server verifies the token and determines the
+   * user's real email.
    */
   useEffect(() => {
     let active = true;
@@ -63,59 +61,114 @@ export function EbookViewer({
         setError(null);
         setUrl('');
 
-        const headers: HeadersInit = {};
-        const params = new URLSearchParams({ productId });
+        const auth = getFirebaseAuth();
 
-        // Only bother with auth for PAID books. Free books never need it.
-        if (!isFree) {
-          try {
-            const auth = getFirebaseAuth();
-            if (auth) {
-              const firebaseUser = await new Promise<typeof auth.currentUser>((resolve) => {
-                if (auth.currentUser) { resolve(auth.currentUser); return; }
-                let unsub: (() => void) | undefined;
-                unsub = auth.onAuthStateChanged((u) => { if (unsub) unsub(); resolve(u); });
-                // don't hang forever if auth never resolves
-                setTimeout(() => resolve(auth.currentUser), 2500);
-              });
-              if (firebaseUser) {
-                const idToken = await firebaseUser.getIdToken();
-                (headers as Record<string, string>).Authorization = `Bearer ${idToken}`;
-              }
-            }
-          } catch {
-            // Auth optional here — if it fails, the admin key or entitlement
-            // check on the server still governs access. Never block a free book.
+        /*
+         * Wait briefly for Firebase Auth to restore the
+         * existing login session.
+         */
+        if (!auth) {
+          if (active) {
+            setError(
+              'Sign-in is not available right now.'
+            );
+            setLoading(false);
           }
+
+          return;
         }
 
+        /*
+         * Firebase normally restores currentUser automatically,
+         * but on initial page load it may not be ready immediately.
+         */
+        const firebaseUser = await new Promise<
+          typeof auth.currentUser
+        >((resolve) => {
+          if (auth.currentUser) {
+            resolve(auth.currentUser);
+            return;
+          }
+
+          let unsubscribe: (() => void) | undefined;
+
+          unsubscribe = auth.onAuthStateChanged((user) => {
+            if (unsubscribe) unsubscribe();
+            resolve(user);
+          });
+        });
+
+        const headers: HeadersInit = {};
+
+        /*
+         * If the user is logged in, send the verified Firebase
+         * ID token to the server.
+         */
+        if (firebaseUser) {
+          const idToken = await firebaseUser.getIdToken();
+
+          headers.Authorization = `Bearer ${idToken}`;
+        }
+
+        const q = new URLSearchParams({
+          productId,
+        });
+
+        /*
+         * We intentionally DO NOT send the email as an
+         * authorization mechanism.
+         *
+         * The server gets the email from the verified token.
+         */
         const res = await fetch(
-          `/api/download-ebook?${params.toString()}`,
-          { method: 'GET', headers, cache: 'no-store' }
+          `/api/download-ebook?${q.toString()}`,
+          {
+            method: 'GET',
+            headers,
+            cache: 'no-store',
+          }
         );
 
         const data = await res.json();
+
         if (!active) return;
 
         if (!res.ok) {
           if (data.code === 'AUTH_REQUIRED') {
-            setError('Please sign in to access this ebook.');
+            setError(
+              'Please sign in to access this ebook.'
+            );
           } else if (data.code === 'PURCHASE_REQUIRED') {
-            setError('Purchase required. Sign in with the email used at checkout.');
+            setError(
+              'Purchase required. Please sign in with the email used at checkout.'
+            );
           } else {
-            setError(data.error || 'Unable to load ebook.');
+            setError(
+              data.error || 'Unable to load ebook.'
+            );
           }
+
           setLoading(false);
           return;
         }
 
-        if (data.url) setUrl(data.url);
-        else setError(data.error || 'Unable to load ebook.');
+        if (data.url) {
+          setUrl(data.url);
+        } else {
+          setError(
+            data.error || 'Unable to load ebook.'
+          );
+        }
+
         setLoading(false);
       } catch (err) {
         console.error('Ebook viewer error:', err);
+
         if (active) {
-          setError('Unable to load ebook. Please try again.');
+          setError(
+            'Unable to load ebook. Please sign in again and try again.'
+          );
+
           setLoading(false);
         }
       }
@@ -126,7 +179,7 @@ export function EbookViewer({
     return () => {
       active = false;
     };
-  }, [productId, email, isFree]);
+  }, [productId, email]);
 
   if (loading) {
     return (

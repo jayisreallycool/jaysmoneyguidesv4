@@ -79,7 +79,7 @@ export const HeroHeader: React.FC<HeroHeaderProps> = ({
           className="absolute inset-0 w-full h-full pointer-events-none z-0 transform-gpu"
         >
           <SafeImage 
-            src="https://firebasestorage.googleapis.com/v0/b/jaysmoneyguides/o/media_assets%2Fjaysmoneyguidesherosectionmakingmoneyguides.webp?alt=media" 
+            src="/images/jaysmoneyguides-hero-banner.webp" 
             alt="JaysMoneyGuides Hero Cover Background" 
             className="w-full h-full object-cover object-center filter brightness-125 contrast-105 saturate-110 opacity-100 transition-opacity duration-700"
             referrerPolicy="no-referrer"
@@ -138,6 +138,17 @@ export const HeroHeader: React.FC<HeroHeaderProps> = ({
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="inline-flex items-center gap-2.5 bg-slate-900/90 hover:bg-slate-900 border border-emerald-400/40 hover:border-emerald-400 rounded-full px-4 py-1.5 text-xs text-slate-100 mb-6 shadow-xl shadow-emerald-950/60 backdrop-blur-xl group transition-all duration-200"
         >
+          <SafeImage 
+            src="/images/jaysmoneyguides-logo.webp" 
+            alt="Jay Lopez - JaysMoneyGuides" 
+            className="w-5 h-5 rounded-full border border-emerald-400 object-cover object-top shrink-0 group-hover:scale-110 transition-transform duration-200"
+            referrerPolicy="no-referrer"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            width="20"
+            height="20"
+          />
           <span className="font-black text-emerald-400 tracking-wider uppercase text-[11px]">Jaysmoneyguides</span>
           <span className="text-slate-500 font-light">|</span>
           <span className="text-slate-200 font-medium">By Jay Lopez • Online Business Strategist</span>

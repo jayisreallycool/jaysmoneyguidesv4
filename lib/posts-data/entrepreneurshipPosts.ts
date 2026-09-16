@@ -12,7 +12,7 @@ export const ENTREPRENEURSHIP_POSTS: BlogPost[] = [
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-26',
     readTimeMinutes: 9,
@@ -139,7 +139,7 @@ This comprehensive approach ensures sustainable growth in affiliate marketing en
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-20',
     readTimeMinutes: 8,
@@ -261,7 +261,7 @@ This comprehensive approach ensures sustainable growth in affiliate marketing en
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-15',
     readTimeMinutes: 8,
@@ -387,7 +387,7 @@ This comprehensive approach ensures sustainable growth in affiliate marketing en
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-11',
     readTimeMinutes: 8,
@@ -508,7 +508,7 @@ This comprehensive approach ensures sustainable growth in affiliate marketing en
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-07',
     readTimeMinutes: 8,
@@ -634,7 +634,7 @@ Anchoring the price to their own personal comfort with spending, rather than to 
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-02',
     readTimeMinutes: 8,
@@ -757,7 +757,7 @@ Many solo operators find a mix works well — a consistent core structure (prote
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-28',
     readTimeMinutes: 8,
@@ -882,7 +882,7 @@ This comprehensive approach ensures sustainable growth in affiliate marketing en
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-23',
     readTimeMinutes: 8,
@@ -1009,7 +1009,7 @@ This comprehensive approach ensures sustainable growth in affiliate marketing en
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-17',
     readTimeMinutes: 8,
@@ -1133,7 +1133,7 @@ For a first hire, a single generalist capable of handling a range of routine tas
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-13',
     readTimeMinutes: 9,

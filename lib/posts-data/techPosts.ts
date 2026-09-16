@@ -12,7 +12,7 @@ export const TECH_POSTS: BlogPost[] = [
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-24',
     readTimeMinutes: 18,
@@ -273,7 +273,7 @@ Monthly is reasonable. Vercel handles most updates automatically. GitHub notifie
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-19',
     readTimeMinutes: 12,
@@ -535,7 +535,7 @@ For transparency, yes. Especially for research-heavy or data-driven content. Rea
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-14',
     readTimeMinutes: 12,
@@ -820,7 +820,7 @@ Your CMS decision is ultimately simple: pick one, commit for 6 months, judge bas
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-10',
     readTimeMinutes: 10,
@@ -1080,7 +1080,7 @@ The hardest part of launching a Custom GPT is actually launching. Everything els
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-06',
     readTimeMinutes: 10,
@@ -1330,7 +1330,7 @@ This is why teams that embrace automation save exponentially more time over year
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-02',
     readTimeMinutes: 8,
@@ -1578,7 +1578,7 @@ No. Ad networks like Google have their own analytics. You can use privacy analyt
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-27',
     readTimeMinutes: 8,
@@ -1845,7 +1845,7 @@ Every few months, take 15 minutes to review your setup. This simple practice kee
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-21',
     readTimeMinutes: 8,
@@ -2122,7 +2122,7 @@ Backups only matter if you test them. Make testing part of your routine.`
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-16',
     readTimeMinutes: 8,
@@ -2459,7 +2459,7 @@ The goal isn't perfect impenetrability—it's being a harder target than casual 
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-11',
     readTimeMinutes: 13,

@@ -33,7 +33,7 @@ interface SafeImageProps {
 export const SafeImage: React.FC<SafeImageProps> = ({
   src,
   alt = '',
-  fallbackSrc = '',
+  fallbackSrc = '/images/jaysmoneyguides-logo.webp',
   className,
   width,
   height,
@@ -73,10 +73,9 @@ export const SafeImage: React.FC<SafeImageProps> = ({
     onError: handleError,
     priority,
     ...(priority ? {} : { loading: loading ?? ('lazy' as const) }),
-    // Firebase Storage images are served directly because their signed/media
-    // URLs can fail through Vercel's optimizer. Local /public images use
-    // Next's optimizer for smaller responsive downloads.
-    unoptimized: imgSrc.startsWith('https://firebasestorage.googleapis.com/'),
+    // IMPORTANT: bypass Next's image optimizer. This prevents Firebase
+    // Storage optimizer 502s and local-image optimizer 400s on Vercel.
+    unoptimized: true,
   };
 
   if (useFill) {

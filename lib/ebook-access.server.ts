@@ -15,7 +15,6 @@ export interface EbookConfig {
   priceCents: number;
   isFree: boolean;
   storagePath: string;
-  coverImage?: string;
 }
 
 export const PRODUCTS_CONFIG: Record<string, EbookConfig> = {
@@ -25,7 +24,6 @@ export const PRODUCTS_CONFIG: Record<string, EbookConfig> = {
     priceCents: 999,
     isFree: false,
     storagePath: 'ebooks/downloads/1.JaysMoneyGuides_Affiliate_Marketing_For_Beginners_Vol_1.pdf',
-    coverImage: 'https://firebasestorage.googleapis.com/v0/b/jaysmoneyguides.firebasestorage.app/o/ebooks%2Fcovers%2Faffiliate%20marketing%20complete%20guide%20with%2030%20day%20program.webp?alt=media',
   },
   'ebook-seo-mastery-guide': {
     id: 'ebook-seo-mastery-guide',
@@ -33,7 +31,6 @@ export const PRODUCTS_CONFIG: Record<string, EbookConfig> = {
     priceCents: 999,
     isFree: false,
     storagePath: 'ebooks/downloads/3.Jaysmoneyguides complete seo guide.pdf',
-    coverImage: 'https://firebasestorage.googleapis.com/v0/b/jaysmoneyguides.firebasestorage.app/o/ebooks%2Fcovers%2Faffiliatemarketing jaysmoneyguides%20seo%20guide%20for%20beginners.webp?alt=media',
   },
   'ebook-affiliate-beginners-free': {
     id: 'ebook-affiliate-beginners-free',
@@ -41,7 +38,6 @@ export const PRODUCTS_CONFIG: Record<string, EbookConfig> = {
     priceCents: 0,
     isFree: true,
     storagePath: 'ebooks/free/2.jaysmoneyguides Affiliate_Marketing_for_Beginners_free_book.pdf',
-    coverImage: 'https://firebasestorage.googleapis.com/v0/b/jaysmoneyguides.firebasestorage.app/o/ebooks%2Fcovers%2FAffiliate%20Marketing%20Cover%20Page%20Jaysmoneyguides%20ebook.webp?alt=media',
   },
   'ebook-start-successful-blog': {
     id: 'ebook-start-successful-blog',

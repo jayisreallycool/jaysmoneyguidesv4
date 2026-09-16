@@ -12,12 +12,18 @@ export async function POST(req: Request) {
 
     const body = (await req.json().catch(() => ({}))) as {
       productId?: string;
+      email?: string;
       origin?: string;
     };
     const productId = body.productId?.trim();
+    const email = body.email?.trim();
 
-    if (!productId) {
-      return Response.json({ error: 'Missing required field: productId' }, { status: 400 });
+    if (!productId || !email) {
+      const missing = [!productId && 'productId', !email && 'email'].filter(Boolean).join(', ');
+      return Response.json({ error: `Missing required fields: ${missing}` }, { status: 400 });
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return Response.json({ error: 'Invalid email' }, { status: 400 });
     }
 
     const product = getProductConfig(productId);
@@ -35,25 +41,21 @@ export async function POST(req: Request) {
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
-      // Don't pre-fill email — let Stripe's form collect it from the user
-      // This gives users a chance to use a different email if needed
+      customer_email: email,
       line_items: [
         {
           price_data: {
             currency: 'usd',
-            product_data: { 
-              name: product.name,
-              images: product.coverImage ? [product.coverImage] : undefined,
-            },
+            product_data: { name: product.name },
             unit_amount: product.priceCents,
           },
           quantity: 1,
         },
       ],
       // Omitting payment_method_types lets Stripe show every enabled method.
-      metadata: { productId: product.id },
-      success_url: `${base}/?purchase=success&session_id={CHECKOUT_SESSION_ID}&product=${encodeURIComponent(product.id)}`,
-      cancel_url: `${base}/?purchase=cancel`,
+      metadata: { productId: product.id, email },
+      success_url: `${base}/ebooks?purchase=success&session_id={CHECKOUT_SESSION_ID}&product=${encodeURIComponent(product.id)}`,
+      cancel_url: `${base}/ebooks?purchase=cancel`,
     });
 
     return Response.json({ url: session.url });

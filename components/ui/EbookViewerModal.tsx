@@ -255,16 +255,16 @@ export const EbookViewerModal: React.FC<EbookViewerModalProps> = ({
       role="dialog"
       aria-label={`${product.title} Ebook Reader`}
     >
-      {/* Top Header Bar - Responsive */}
-      <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3 px-3 sm:px-6 py-2 sm:py-3 border-b border-slate-800 bg-slate-900/95 shrink-0">
-        <div className="flex items-center gap-2 min-w-0 w-full sm:w-auto">
+      {/* Top Header Bar */}
+      <header className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3 border-b border-slate-800 bg-slate-900/95 shrink-0">
+        <div className="flex items-center gap-3 min-w-0">
           <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0">
             <BookOpen className="w-4 h-4" />
           </div>
-          <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2 flex-wrap">
-              <h2 className="text-xs sm:text-sm font-bold text-white truncate">{product.title}</h2>
-              <span className={`text-[9px] sm:text-[10px] inline-flex items-center px-2 py-0.5 rounded-full font-semibold ${
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <h2 className="text-sm font-bold text-white truncate">{product.title}</h2>
+              <span className={`hidden md:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold ${
                 product.isFree
                   ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
                   : isUnlocked
@@ -272,44 +272,44 @@ export const EbookViewerModal: React.FC<EbookViewerModalProps> = ({
                   : 'bg-amber-400/20 text-amber-300 border border-amber-400/30'
               }`}>
                 {product.isFree
-                  ? 'Free'
+                  ? 'Free Full Edition'
                   : isUnlocked
-                  ? `Purchased`
-                  : 'Preview'}
+                  ? `Purchased Edition ($${(product.priceCents / 100).toFixed(2)})`
+                  : 'Sample Preview Mode'}
               </span>
             </div>
-            <p className="text-[10px] sm:text-[11px] text-slate-400 truncate">{product.subtitle}</p>
+            <p className="text-[11px] text-slate-400 truncate">{product.subtitle}</p>
           </div>
         </div>
 
-        {/* Action Controls - Responsive Grid */}
-        <div className="flex items-center gap-1 sm:gap-2 shrink-0 w-full sm:w-auto overflow-x-auto">
+          {/* Action Controls */}
+        <div className="flex items-center gap-2 shrink-0">
           {/* Reader View vs Native PDF Switcher */}
           {isUnlocked && (
-            <div className="flex items-center bg-slate-800/90 rounded-lg sm:rounded-xl p-1 border border-slate-700">
+            <div className="flex items-center bg-slate-800/90 rounded-xl p-1 border border-slate-700">
               {hasRichReader && (
                 <button
                   onClick={() => setViewMode('reader')}
-                  className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-semibold transition-all cursor-pointer touch-manipulation ${
+                  className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     viewMode === 'reader'
                       ? 'bg-emerald-500 text-slate-950 shadow-sm'
                       : 'text-slate-300 hover:text-white'
                   }`}
                 >
-                  <Sparkles className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
-                  <span className="hidden sm:inline">Reader</span>
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Reader</span>
                 </button>
               )}
               <button
                 onClick={() => setViewMode('pdf')}
-                className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-semibold transition-all cursor-pointer touch-manipulation ${
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   viewMode === 'pdf'
                     ? 'bg-emerald-500 text-slate-950 shadow-sm'
                     : 'text-slate-300 hover:text-white'
                 }`}
               >
-                <FileText className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
-                <span className="hidden sm:inline">PDF</span>
+                <FileText className="w-3.5 h-3.5" />
+                <span>PDF View</span>
               </button>
             </div>
           )}
@@ -320,31 +320,30 @@ export const EbookViewerModal: React.FC<EbookViewerModalProps> = ({
                 href={activePdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:inline-flex items-center gap-1 sm:gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[11px] sm:text-xs border border-slate-700 transition-all cursor-pointer touch-manipulation"
+                className="hidden lg:inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-3 py-2 rounded-xl text-xs border border-slate-700 transition-all cursor-pointer"
                 title="Open in New Tab"
               >
-                <ExternalLink className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
-                <span className="hidden sm:inline">Full Tab</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+                <span>Full Tab</span>
               </a>
 
               <button
                 onClick={handleDownload}
                 disabled={isDownloadingPdf}
-                className="inline-flex items-center gap-1 sm:gap-1.5 bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 font-bold px-2 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[11px] sm:text-xs transition-all shadow-sm shadow-emerald-500/20 disabled:opacity-50 cursor-pointer touch-manipulation"
+                className="inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 font-bold px-3.5 py-2 rounded-xl text-xs transition-all shadow-sm shadow-emerald-500/20 disabled:opacity-50 cursor-pointer"
                 title="Download PDF Ebook from Storage"
               >
-                <Download className={`w-3 sm:w-3.5 h-3 sm:h-3.5 ${isDownloadingPdf ? 'animate-bounce' : ''}`} />
-                <span className="hidden sm:inline">{isDownloadingPdf ? 'Downloading…' : 'Download'}</span>
-                <span className="sm:hidden">{isDownloadingPdf ? '…' : '↓'}</span>
+                <Download className={`w-3.5 h-3.5 ${isDownloadingPdf ? 'animate-bounce' : ''}`} />
+                <span>{isDownloadingPdf ? 'Downloading…' : 'Download PDF'}</span>
               </button>
 
               <button
                 onClick={handlePrint}
-                className="hidden md:inline-flex items-center gap-1 sm:gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[11px] sm:text-xs border border-slate-700 transition-all cursor-pointer touch-manipulation"
+                className="hidden md:inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-3 py-2 rounded-xl text-xs border border-slate-700 transition-all cursor-pointer"
                 title="Print or Save as PDF"
               >
-                <Printer className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
-                <span className="hidden sm:inline">Print</span>
+                <Printer className="w-3.5 h-3.5" />
+                <span>Print</span>
               </button>
             </>
           ) : (
@@ -449,18 +448,17 @@ export const EbookViewerModal: React.FC<EbookViewerModalProps> = ({
               <button
                 onClick={() => onBuy && onBuy(product)}
                 disabled={isCheckingOut}
-                className="w-full bg-gradient-to-r from-amber-400 to-amber-300 hover:from-amber-300 hover:to-amber-200 active:scale-95 text-slate-950 font-black py-2.5 sm:py-3.5 px-4 sm:px-6 rounded-xl sm:rounded-2xl text-xs sm:text-sm transition-all shadow-xl shadow-amber-400/25 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 touch-manipulation"
+                className="w-full bg-gradient-to-r from-amber-400 to-amber-300 hover:from-amber-300 hover:to-amber-200 active:scale-95 text-slate-950 font-black py-3.5 px-6 rounded-2xl text-sm transition-all shadow-xl shadow-amber-400/25 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
               >
                 {isCheckingOut ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    <span className="hidden sm:inline">Redirecting to Stripe Checkout...</span>
-                    <span className="sm:hidden">Redirecting...</span>
+                    <span>Redirecting to Stripe Checkout...</span>
                   </>
                 ) : (
                   <>
                     <ShoppingBag className="w-4 h-4" />
-                    <span>Pay ${(product.priceCents / 100).toFixed(2)}</span>
+                    <span>Pay with Stripe — ${(product.priceCents / 100).toFixed(2)}</span>
                   </>
                 )}
               </button>
@@ -478,19 +476,19 @@ export const EbookViewerModal: React.FC<EbookViewerModalProps> = ({
         {viewMode === 'reader' && (
           <div className="flex-1 flex flex-col h-full overflow-hidden bg-slate-950">
             
-            {/* Toolbar: Navigation, Zoom & Page jump - Responsive */}
-            <div className="flex items-center justify-between gap-2 sm:gap-3 px-3 sm:px-6 py-2 sm:py-2.5 bg-slate-900/60 border-b border-slate-800 text-xs text-slate-300 shrink-0 flex-wrap">
+            {/* Toolbar: Navigation, Zoom & Page jump */}
+            <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-2.5 bg-slate-900/60 border-b border-slate-800 text-xs text-slate-300 shrink-0">
               {/* Pagination Controls */}
-              <div className="flex items-center gap-1 sm:gap-2">
+              <div className="flex items-center gap-2">
                 <button
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 disabled:opacity-30 disabled:pointer-events-none transition-all touch-manipulation"
+                  className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 disabled:opacity-30 disabled:pointer-events-none transition-all"
                   aria-label="Previous Page"
                 >
-                  <ChevronLeft className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
+                  <ChevronLeft className="w-4 h-4" />
                 </button>
-                <div className="flex items-center gap-0.5 sm:gap-1 font-mono font-medium text-slate-200 text-[11px] sm:text-xs">
+                <div className="flex items-center gap-1 font-mono font-medium text-slate-200">
                   <span className="text-emerald-400 font-bold">{currentPage}</span>
                   <span className="text-slate-500">/</span>
                   <span>{totalPages}</span>
@@ -498,7 +496,7 @@ export const EbookViewerModal: React.FC<EbookViewerModalProps> = ({
                 <button
                   onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 disabled:opacity-30 disabled:pointer-events-none transition-all touch-manipulation"
+                  className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 disabled:opacity-30 disabled:pointer-events-none transition-all"
                   aria-label="Next Page"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -584,7 +582,11 @@ export const EbookViewerModal: React.FC<EbookViewerModalProps> = ({
                   /* Back Cover Layout */
                   <div className="flex flex-col items-center justify-center text-center space-y-6 py-16">
                     <div className="w-24 h-24 rounded-full bg-emerald-50 border-4 border-emerald-100 flex items-center justify-center shadow-lg">
-                      <span className="font-black text-emerald-600 text-xl text-center">JMG</span>
+                      <SafeImage
+                        src="/images/jaysmoneyguides-logo.webp"
+                        alt="JaysMoneyGuides"
+                        className="w-16 h-16 object-contain"
+                      />
                     </div>
                     <h2 className="text-2xl font-black text-slate-900">Thank You for Reading!</h2>
                     <div className="space-y-2 max-w-lg text-slate-600 text-sm">
@@ -723,19 +725,18 @@ export const EbookViewerModal: React.FC<EbookViewerModalProps> = ({
               </div>
             </div>
 
-            {/* Bottom Nav Bar - Responsive */}
-            <div className="px-3 sm:px-6 py-2 sm:py-3 bg-slate-900/90 border-t border-slate-800 flex items-center justify-between gap-2 sm:gap-3 shrink-0 flex-wrap">
+            {/* Bottom Nav Bar */}
+            <div className="px-4 sm:px-6 py-3 bg-slate-900/90 border-t border-slate-800 flex items-center justify-between gap-3 shrink-0">
               <button
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="inline-flex items-center gap-1 sm:gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-semibold disabled:opacity-30 disabled:pointer-events-none transition-all touch-manipulation"
+                className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-xs font-semibold disabled:opacity-30 disabled:pointer-events-none transition-all"
               >
-                <ChevronLeft className="w-3 sm:w-4 h-3 sm:h-4" /> 
-                <span className="hidden sm:inline">Previous</span>
+                <ChevronLeft className="w-4 h-4" /> Previous
               </button>
 
-              {/* Progress Bar - Hidden on mobile, visible on sm+ */}
-              <div className="flex-1 max-w-xs mx-2 sm:mx-4 hidden sm:block min-w-[100px]">
+              {/* Progress Bar */}
+              <div className="flex-1 max-w-xs mx-4 hidden sm:block">
                 <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
                   <div 
                     className="bg-emerald-500 h-full rounded-full transition-all duration-300"
@@ -744,22 +745,12 @@ export const EbookViewerModal: React.FC<EbookViewerModalProps> = ({
                 </div>
               </div>
 
-              {/* Page Counter - Mobile visible, sm+ hidden */}
-              <span className="text-[10px] sm:hidden text-slate-400 font-mono font-medium">
-                {currentPage}/{totalPages}
-              </span>
-
-              {/* Page Counter - Hidden on mobile, visible on sm+ */}
-              <span className="hidden sm:inline text-slate-400 text-xs font-mono font-medium">
-                {currentPage}/{totalPages}
-              </span>
-
               <button
                 onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="inline-flex items-center gap-1 sm:gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-2 sm:px-5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold disabled:opacity-30 disabled:pointer-events-none transition-all shadow-sm touch-manipulation"
+                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-5 py-2 rounded-xl text-xs font-bold disabled:opacity-30 disabled:pointer-events-none transition-all shadow-sm"
               >
-                <span className="hidden sm:inline">Next</span> <ChevronRight className="w-3 sm:w-4 h-3 sm:h-4" />
+                Next <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </div>

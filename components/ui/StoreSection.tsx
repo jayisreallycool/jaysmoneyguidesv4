@@ -2,6 +2,7 @@
 import React, { useMemo, useState } from 'react';
 import { ShoppingBag, BookOpen, Sparkles, Lock, Eye, Loader2, FileText, Bell, CheckCircle2, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
 import { Product } from '@/lib/types';
+import { SafeImage } from './SafeImage';
 
 interface StoreSectionProps {
   products: Product[];
@@ -45,11 +46,14 @@ const ProductCard: React.FC<{
         className="relative aspect-[3/2] w-full overflow-hidden bg-slate-950 block z-10 cursor-pointer"
         aria-label={`Preview ${product.title}`}
       >
-        <img
+        <SafeImage
           src={product.coverImage}
           alt={`${product.title} - ${product.subtitle}`}
+          width={600}
+          height={400}
           loading="lazy"
           decoding="async"
+          referrerPolicy="no-referrer"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-10">

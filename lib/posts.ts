@@ -1,6 +1,6 @@
 import 'server-only';
 import { INITIAL_POSTS } from './posts-data/initialPosts';
-import type { BlogPost, BlogPostSummary } from './types';
+import type { BlogPost } from './types';
 
 export type { BlogPost };
 
@@ -26,9 +26,4 @@ export async function getRelatedPosts(post: BlogPost, limit = 4): Promise<BlogPo
   return INITIAL_POSTS.filter(
     (p) => p.category === post.category && p.slug !== post.slug
   ).slice(0, limit);
-}
-
-
-export async function getPostSummaries(): Promise<BlogPostSummary[]> {
-  return (await getAllPosts()).map(({ content: _content, ...summary }) => summary);
 }

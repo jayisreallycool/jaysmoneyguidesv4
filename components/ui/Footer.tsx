@@ -186,9 +186,6 @@ export const Footer: React.FC<FooterProps> = ({
             <nav className="space-y-2 flex flex-col">
               <button onClick={() => onSelectCategory('SEO')} className="text-sm hover:text-emerald-400 transition">SEO Guides</button>
               <button onClick={() => onSelectCategory('Blogging')} className="text-sm hover:text-emerald-400 transition">Blogging Tips</button>
-              <a href="/tools" className="text-sm hover:text-emerald-400 transition flex items-center gap-1">
-                Tools & Affiliate
-              </a>
               <button onClick={() => openModal('media-database')} className="text-sm text-emerald-400 hover:text-emerald-300 font-semibold transition flex items-center gap-1">
                 Media Database
                 <ExternalLink className="w-3.5 h-3.5" />

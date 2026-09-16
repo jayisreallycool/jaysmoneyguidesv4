@@ -250,17 +250,17 @@ export const ModernMenuWidget: React.FC<ModernMenuWidgetProps> = ({
 
   return (
     <>
-      {/* Fixed hamburger menu — top right */}
-      <div className="fixed top-[112px] right-4 sm:right-6 z-[75] group">
+      {/* FLOATING TRIGGER PILL / DOCK (Bottom Right) */}
+      <div className="fixed bottom-6 right-6 z-40 flex items-center gap-2 group">
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Quick Navigation Menu"
-          className={`relative flex items-center justify-center w-11 h-11 rounded-xl shadow-2xl backdrop-blur-xl border transition-all duration-200 cursor-pointer ${
-            isOpen
-              ? 'bg-emerald-500 text-slate-950 border-emerald-400 shadow-emerald-500/20'
-              : 'bg-slate-900/95 text-slate-100 border-slate-700/80 hover:border-emerald-500/60 hover:shadow-emerald-500/10 shadow-slate-950/80'
+          className={`relative flex items-center gap-2.5 px-4 py-3 rounded-full shadow-2xl backdrop-blur-xl border transition-all duration-300 cursor-pointer ${
+            isOpen 
+              ? 'bg-emerald-500 text-slate-950 border-emerald-400 font-extrabold shadow-emerald-500/20' 
+              : 'bg-slate-900/90 text-slate-100 border-slate-700/80 hover:border-emerald-500/60 hover:shadow-emerald-500/10 shadow-slate-950/80'
           }`}
         >
           {/* Animated Icon */}
@@ -291,7 +291,9 @@ export const ModernMenuWidget: React.FC<ModernMenuWidgetProps> = ({
             </AnimatePresence>
           </div>
 
-          <span className="sr-only">{isOpen ? 'Close menu' : 'Open menu'}</span>
+          <span className="text-xs font-black tracking-wide hidden sm:inline-block">
+            {isOpen ? 'Close' : 'Quick Menu'}
+          </span>
 
           {/* Active Bookmarks Indicator Badge */}
           {bookmarkedCount > 0 && !isOpen && (
@@ -299,6 +301,13 @@ export const ModernMenuWidget: React.FC<ModernMenuWidgetProps> = ({
               {bookmarkedCount}
             </span>
           )}
+
+          {/* Shortcut Key Badge */}
+          <span className={`hidden md:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono rounded ${
+            isOpen ? 'bg-slate-950/20 text-slate-950' : 'bg-slate-800 text-slate-400 border border-slate-700'
+          }`}>
+            ⌘K
+          </span>
         </motion.button>
       </div>
 

@@ -30,10 +30,6 @@ export interface BlogPost {
   isDraft?: boolean;
 }
 
-
-/** Lightweight post shape used by the homepage so full article bodies are not serialized into the initial client payload. */
-export type BlogPostSummary = Omit<BlogPost, 'content'>;
-
 export interface Comment {
   id: string;
   postId: string;

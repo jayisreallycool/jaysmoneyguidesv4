@@ -26,7 +26,7 @@ const DISCLOSURE = `> **Advertising disclosure:** This article contains SoFi ref
 const AUTHOR = {
   name: 'Jay Lopez',
   role: 'Founder & Lead Strategist',
-  avatar: '',
+  avatar: '/images/jaysmoneyguides-logo.webp',
 };
 
 const PERSONAL = 'https://www.sofi.com/invite/personal-loans?gcp=f694b62f-0bd0-46e4-8489-13fa4dbe2d57&isAliasGcp=false&siid=2c10d514-bead-4026-a011-aa5f1593513b';

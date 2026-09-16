@@ -12,7 +12,7 @@ export const AFFILIATE_POSTS: BlogPost[] = [
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-24',
     readTimeMinutes: 8,
@@ -139,7 +139,7 @@ This comprehensive approach ensures sustainable growth in affiliate marketing en
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-23',
     readTimeMinutes: 8,
@@ -273,7 +273,7 @@ The affiliate marketing industry's growth is real, but it's more useful to under
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-22',
     readTimeMinutes: 9,
@@ -415,7 +415,7 @@ SaaS affiliate marketing rewards the same things that make any content genuinely
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-18',
     readTimeMinutes: 8,
@@ -546,7 +546,7 @@ This comprehensive approach ensures sustainable growth in affiliate marketing en
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-15',
     readTimeMinutes: 8,
@@ -682,7 +682,7 @@ It's reasonable to ask, especially if you can point to specific value you bring 
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-11',
     readTimeMinutes: 8,
@@ -813,7 +813,7 @@ Not on its own. The disclosure needs to appear on the specific page containing t
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-08',
     readTimeMinutes: 9,
@@ -944,7 +944,7 @@ There's no fixed number, but as a general guide, an article that reads as a genu
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-07-04',
     readTimeMinutes: 8,
@@ -1073,7 +1073,7 @@ Most email platforms provide open and click-rate data, and many support UTM tagg
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-29',
     readTimeMinutes: 8,
@@ -1206,7 +1206,7 @@ Small YouTube channels aren't at a fundamental disadvantage in affiliate marketi
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-25',
     readTimeMinutes: 8,
@@ -1335,7 +1335,7 @@ This comprehensive approach ensures sustainable growth in affiliate marketing en
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-20',
     readTimeMinutes: 7,
@@ -1465,7 +1465,7 @@ This comprehensive approach ensures sustainable growth in affiliate marketing en
     author: {
       name: 'Jay Lopez',
       role: 'Founder & Lead Strategist',
-      avatar: '',
+      avatar: '/images/jaysmoneyguides-logo.webp',
     },
     publishedAt: '2026-06-15',
     readTimeMinutes: 8,

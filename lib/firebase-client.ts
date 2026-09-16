@@ -2,11 +2,9 @@
 
 import { initializeApp, getApps, type FirebaseApp } from 'firebase/app';
 import { getStorage, type FirebaseStorage } from 'firebase/storage';
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 
 import {
   getAuth,
-  signInWithRedirect,
   GoogleAuthProvider,
   signInWithPopup,
   signInWithEmailAndPassword,
@@ -76,22 +74,6 @@ function getClientApp(): FirebaseApp | null {
     }
 
     app = initializeApp(config);
-
-    // App Check is optional. If Firebase Authentication App Check enforcement
-    // is enabled, provide NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY in Vercel.
-    // Never initialize it with an empty/invalid key because that can produce
-    // auth/firebase-app-check-token-is-invalid.
-    const appCheckSiteKey = process.env.NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY;
-    if (appCheckSiteKey) {
-      try {
-        initializeAppCheck(app, {
-          provider: new ReCaptchaV3Provider(appCheckSiteKey),
-          isTokenAutoRefreshEnabled: true,
-        });
-      } catch (error) {
-        console.error('Firebase App Check initialization failed:', error);
-      }
-    }
 
     return app;
   } catch (error) {
@@ -213,14 +195,6 @@ function getFirebaseError(error: unknown): {
 function friendlyError(error: unknown): string {
   const { code, message } = getFirebaseError(error);
 
-  // Special case: the Google OAuth client was deleted in Google Cloud Console.
-  // Firebase surfaces this as an internal error whose message contains
-  // "deleted_client" or "401". This is a CONSOLE fix, not a code fix.
-  const raw = `${code} ${message}`.toLowerCase();
-  if (raw.includes('deleted_client') || raw.includes('deleted client')) {
-    return 'Google sign-in is misconfigured: the OAuth client was deleted. Fix: in Firebase Console → Authentication → Sign-in method, disable Google, then re-enable it (this regenerates the OAuth client). Email sign-in still works meanwhile.';
-  }
-
   const map: Record<string, string> = {
     'auth/invalid-email':
       'That email address looks invalid.',
@@ -266,9 +240,6 @@ function friendlyError(error: unknown): string {
 
     'auth/app-not-authorized':
       'This Firebase application is not authorized for Google sign-in.',
-
-    'auth/firebase-app-check-token-is-invalid':
-      'Firebase App Check rejected this request. If App Check enforcement is enabled, add the correct reCAPTCHA v3 site key to NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY and authorize this domain.',
 
     'auth/configuration-not-found':
       'Firebase Authentication configuration was not found.',
@@ -358,19 +329,21 @@ export async function signInWithGoogle(): Promise<AuthResult> {
     };
   } catch (error) {
     const firebaseError = getFirebaseError(error);
-    console.error('GOOGLE SIGN-IN ERROR:', { code: firebaseError.code, message: firebaseError.message, error });
 
-    // If the browser blocks the popup, use Firebase's redirect flow instead.
-    if (firebaseError.code === 'auth/popup-blocked') {
-      try {
-        await signInWithRedirect(auth, new GoogleAuthProvider());
-        return { ok: false, error: 'Redirecting to Google…' };
-      } catch (redirectError) {
-        return { ok: false, error: friendlyError(redirectError) };
-      }
-    }
+    /*
+     * Keep the complete error in the browser console.
+     * This is extremely useful if Firebase rejects the request.
+     */
+    console.error('GOOGLE SIGN-IN ERROR:', {
+      code: firebaseError.code,
+      message: firebaseError.message,
+      error,
+    });
 
-    return { ok: false, error: friendlyError(error) };
+    return {
+      ok: false,
+      error: friendlyError(error),
+    };
   }
 }
 
@@ -512,19 +485,17 @@ export async function sendReset(
 |--------------------------------------------------------------------------
 */
 
-export async function signOutUser(): Promise<{ ok: boolean; error?: string }> {
+export async function signOutUser(): Promise<void> {
   const auth = getFirebaseAuth();
 
   if (!auth) {
-    return { ok: true }; // nothing to sign out of
+    return;
   }
 
   try {
     await fbSignOut(auth);
-    return { ok: true };
   } catch (error) {
     console.error('SIGN OUT ERROR:', error);
-    return { ok: false, error: 'Could not sign out. Please try again.' };
   }
 }
 
